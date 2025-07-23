@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece - Grand Line Schedule</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Seaweed+Script&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #0a192f 0%, #1a3a5f 50%, #2a5a8f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #e0e0e0;
+            font-family: 'Noto Sans', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        /* Sky with animated clouds */
+        .sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        
+        .cloud-1 {
+            width: 120px;
+            height: 40px;
+            top: 15%;
+            left: -150px;
+            animation: cloudMove 40s linear infinite;
+        }
+        
+        .cloud-1:before, .cloud-1:after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        
+        .cloud-1:before {
+            width: 50px;
+            height: 50px;
+            top: -20px;
+            left: 15px;
+        }
+        
+        .cloud-1:after {
+            width: 70px;
+            height: 70px;
+            top: -30px;
+            right: 15px;
+        }
+        
+        .cloud-2 {
+            width: 180px;
+            height: 60px;
+            top: 30%;
+            left: -200px;
+            animation: cloudMove 50s linear infinite;
+            animation-delay: 5s;
+        }
+        
+        .cloud-2:before, .cloud-2:after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        
+        .cloud-2:before {
+            width: 70px;
+            height: 70px;
+            top: -30px;
+            left: 20px;
+        }
+        
+        .cloud-2:after {
+            width: 90px;
+            height: 90px;
+            top: -40px;
+            right: 20px;
+        }
+        
+        .cloud-3 {
+            width: 150px;
+            height: 50px;
+            top: 25%;
+            left: -180px;
+            animation: cloudMove 60s linear infinite;
+            animation-delay: 15s;
+        }
+        
+        .cloud-3:before, .cloud-3:after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        
+        .cloud-3:before {
+            width: 60px;
+            height: 60px;
+            top: -25px;
+            left: 15px;
+        }
+        
+        .cloud-3:after {
+            width: 80px;
+            height: 80px;
+            top: -35px;
+            right: 15px;
+        }
+        
+        @keyframes cloudMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 300px)); }
+        }
+        
+        /* Enhanced ocean waves with realistic foam */
+        .ocean {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
+            transform-origin: center bottom;
+        }
+        
+        .wave1 {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 Q300,150 600,0 T1200,0 V120 H0 Z" fill="%231a3d6d"></path></svg>');
+            animation: wave 12s linear infinite;
+            z-index: 4;
+            opacity: 0.9;
+        }
+        
+        .wave2 {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 Q300,100 600,0 T1200,0 V120 H0 Z" fill="%231a3d6d"></path></svg>');
+            animation: wave 18s linear infinite;
+            z-index: 3;
+            opacity: 0.7;
+        }
+        
+        .wave3 {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 Q300,80 600,0 T1200,0 V120 H0 Z" fill="%231a3d6d"></path></svg>');
+            animation: wave 25s linear infinite;
+            z-index: 2;
+            opacity: 0.5;
+        }
+        
+        .wave-foam {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,90 600,60 T1200,60 V120 H0 Z" fill="white" opacity="0.8"/></svg>');
+    background-repeat: repeat-x;
+    animation: foamMove 10s linear infinite, foamWobble 3s ease-in-out infinite;
+    z-index: 5;
+    height: 40%;
+    top: 0;
+    width: 200%;
+    background-size: 50% 100%;
+    mask-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 100%);
+    opacity: 0.7;
+}
+
+@keyframes foamMove {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-25%) translateY(0); }
+}
+
+@keyframes foamWobble {
+    0%, 100% { transform: translateX(0) translateY(-2px) scaleY(1); }
+    25% { transform: translateX(0) translateY(0) scaleY(0.98); }
+    50% { transform: translateX(0) translateY(2px) scaleY(0.95); }
+    75% { transform: translateX(0) translateY(0) scaleY(0.98); }
+}
+        
+        @keyframes wave {
+            0% { 
+                transform: translateX(0) translateY(0px); 
+            }
+            25% { 
+                transform: translateX(-25%) translateY(-5px); 
+            }
+            50% { 
+                transform: translateX(-50%) translateY(0px); 
+            }
+            75% { 
+                transform: translateX(-25%) translateY(5px); 
+            }
+            100% { 
+                transform: translateX(0) translateY(0px); 
+            }
+        }
+        
+        @keyframes foamWave {
+            0%, 100% { height: 20px; }
+            50% { height: 25px; }
+        }
+        
+        /* Animated stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: linear-gradient(145deg, #1a2c50, #0e1f3d);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 
+                        0 0 0 2px #d4a017, 
+                        0 0 0 6px #8b0000;
+            overflow: hidden;
+            position: relative;
+            margin: 20px;
+            border: 1px solid #345;
+            z-index: 1;
+        }
+        
+        .one-piece-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            border: 12px solid transparent;
+            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 L100,0 L100,100 L0,100 Z' fill='none' stroke='%23d4a017' stroke-width='4' stroke-dasharray='10,10'/%3E%3C/svg%3E") 30 stretch;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #8b0000, #a52a2a, #8b0000);
+            color: #ffd700;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 3px solid #d4a017;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header h1 {
+            font-family: 'Pirata One', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-family: 'Seaweed Script', cursive;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Straw Hat decoration above header */
+        .straw-hat-decoration {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            color: #d4a017;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            z-index: 3;
+            animation: rotateHat 15s linear infinite;
+        }
+        
+        @keyframes rotateHat {
+            0% { transform: translateX(-50%) rotate(0deg); }
+            100% { transform: translateX(-50%) rotate(360deg); }
+        }
+        
+        .class-info {
+            background: linear-gradient(to right, #8b0000, #a52a2a);
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4a017;
+        }
+        
+        .class-section {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffd700;
+            letter-spacing: 0.5px;
+            font-family: 'Seaweed Script', cursive;
+        }
+        
+        .teacher {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            background: rgba(139, 0, 0, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #d4a017;
+        }
+        
+        .download-all-btn {
+            background: linear-gradient(to right, #d4a017, #b8860b);
+            color: #3e2723;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .download-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #b8860b, #d4a017);
+        }
+        
+        .schedule-container {
+            padding: 25px;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231a2c50' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 0 auto;
+            background: rgba(40, 60, 100, 0.7);
+            border: 2px solid #d4a017;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        th, td {
+            padding: 14px 12px;
+            text-align: center;
+            vertical-align: middle;
+            border-right: 1px solid #456;
+            border-bottom: 1px solid #456;
+            transition: all 0.3s ease;
+        }
+        
+        th {
+            background: linear-gradient(to bottom, #8b0000, #a52a2a);
+            color: #ffd700;
+            font-weight: 600;
+            font-size: 1.1rem;
+            font-family: 'Pirata One', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #d4a017;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        td:last-child, th:last-child {
+            border-right: none;
+        }
+        
+        .time-slot {
+            background: linear-gradient(to right, #1a2c50, #0e1f3d);
+            font-weight: 600;
+            width: 180px;
+            color: #ffd700;
+            font-family: 'Pirata One', cursive;
+        }
+        
+        .subject-cell {
+            font-weight: 500;
+            color: #fff;
+            position: relative;
+            background: rgba(65, 105, 225, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .subject-cell:hover {
+            background: rgba(70, 130, 180, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .subject-cell.has-note::after {
+            content: "📜";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .subject-cell.has-drawing::after {
+            content: "🗺️";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .subject-name {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+            color: #ffd700;
+        }
+        
+        .teacher-name {
+            display: block;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #d7ccc8;
+        }
+        
+        .note-timestamp {
+            font-size: 0.7rem;
+            color: #bcaaa4;
+            display: block;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .empty-cell {
+            background: rgba(40, 60, 100, 0.5);
+        }
+        
+        .watermark {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.05;
+            font-size: 12rem;
+            font-weight: bold;
+            color: #ffd700;
+            pointer-events: none;
+            font-family: 'Pirata One', cursive;
+            transform: rotate(-15deg);
+        }
+        
+        .devil-fruit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            opacity: 0.1;
+            color: #ffd700;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, #1a2c50, #0e1f3d);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 
+                        0 0 0 2px #d4a017, 
+                        0 0 0 6px #8b0000;
+            width: 90%;
+            max-width: 900px;
+            padding: 25px;
+            position: relative;
+            animation: modalSlide 0.4s ease-out;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            color: #e0e0e0;
+        }
+        
+        @keyframes modalSlide {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #d4a017;
+        }
+        
+        .modal-title {
+            color: #ffd700;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Pirata One', cursive;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #ffd700;
+            transition: transform 0.2s;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg);
+            color: #ffd700;
+        }
+        
+        .note-textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 2px solid #345;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+            background: rgba(40, 60, 100, 0.3);
+            color: #fff;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .note-textarea:focus {
+            border-color: #d4a017;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(212, 160, 23, 0.2);
+        }
+        
+        .timestamp-info {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+            font-weight: 500;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #345;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            color: #bcaaa4;
+            font-family: 'Pirata One', cursive;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid #d4a017;
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .drawing-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1; 
+            border: 2px solid #345;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            background: rgba(40, 60, 100, 0.3);
+        }
+        
+        .canvas-wrapper {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: rgba(40, 60, 100, 0.5);
+        }
+        
+        #drawingCanvas {
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: crosshair;
+            touch-action: none;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .drawing-tools {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(to right, #8b0000, #a52a2a);
+            border-top: 1px solid #345;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tool-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(65, 105, 225, 0.5);
+            border: 2px solid #345;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #ffd700;
+        }
+        
+        .tool-btn.active {
+            border-color: #ffd700;
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .tool-btn i {
+            font-size: 18px;
+            color: #ffd700;
+        }
+        
+        .color-picker {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid #345;
+        }
+        
+        .color-picker::-webkit-color-swatch {
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+        }
+        
+        .color-picker::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        
+        .line-width {
+            width: 120px;
+        }
+        
+        .tool-label {
+            font-weight: 500;
+            color: #bcaaa4;
+            margin-right: 5px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #345;
+            margin-top: auto;
+        }
+        
+        .modal-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .save-btn {
+            background: linear-gradient(to right, #d4a017, #b8860b);
+            color: #3e2723;
+        }
+        
+        .save-btn:hover {
+            background: linear-gradient(to right, #b8860b, #d4a017);
+            transform: translateY(-2px);
+        }
+        
+        .download-btn {
+            background: linear-gradient(to right, #8b0000, #a52a2a);
+            color: #ffd700;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(to right, #a52a2a, #8b0000);
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: linear-gradient(to right, #8b0000, #a52a2a);
+            color: #ffd700;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: center;
+            border-top: 3px solid #d4a017;
+            font-size: 1.5rem;
+            text-align: center;
+            font-family: 'Seaweed Script', cursive;
+        }
+        
+        .pirate-ship {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 150px;
+    height: 100px;
+    opacity: 0.7;
+    z-index: 0;
+    animation: shipFloat 12s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+.pirate-ship svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes shipFloat {
+    0%, 100% { 
+        transform: translateY(0) rotate(-3deg); 
+    }
+    25% { 
+        transform: translateY(-5px) rotate(3deg); 
+    }
+    50% { 
+        transform: translateY(0) rotate(-3deg); 
+    }
+    75% { 
+        transform: translateY(5px) rotate(3deg); 
+    }
+}
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .header h2 { font-size: 1.3rem; }
+            th, td { padding: 10px 8px; font-size: 0.9rem; }
+            .time-slot { width: 120px; }
+            .subject-name { font-size: 0.95rem; }
+            .teacher-name { font-size: 0.85rem; }
+            .class-info { flex-direction: column; gap: 12px; text-align: center; }
+            .download-all-btn { margin-left: 0; margin-top: 10px; }
+            .straw-hat-decoration { top: -50px; font-size: 3rem; }
+        }
+        
+        @media (max-width: 576px) {
+            body { padding: 10px; }
+            .container { margin: 10px; }
+            .header { padding: 15px; }
+            .header h1 { font-size: 2rem; }
+            .header h2 { font-size: 1.1rem; }
+            .schedule-container { padding: 15px; }
+            th, td { padding: 8px 6px; font-size: 0.8rem; }
+            .time-slot { width: 100px; }
+            .subject-name { font-size: 0.85rem; }
+            .teacher-name { font-size: 0.75rem; }
+            .straw-hat { font-size: 2rem; top: -15px; }
+            .modal-content { height: 70vh; }
+            .modal-actions { flex-direction: column; }
+            .straw-hat-decoration { top: -40px; font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated stars -->
+    <div class="stars" id="starsContainer"></div>
+    
+    <!-- Sky with animated clouds -->
+    <div class="sky">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+    
+    <!-- Enhanced ocean waves with realistic foam -->
+    <div class="ocean">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave-foam"></div>
+    </div>
+    
+    <!-- Replace the existing .pirate-ship div with this: -->
+<div class="pirate-ship">
+  <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Ship hull -->
+    <path d="M20,60 L180,60 L170,40 L30,40 Z" fill="#722f37"/>
+    <!-- Deck -->
+    <path d="M40,40 L160,40 L150,30 L50,30 Z" fill="#5a1e28"/>
+    <!-- Mast -->
+    <rect x="95" y="10" width="10" height="30" fill="#d4a017"/>
+    <!-- Sail -->
+    <path d="M100,15 L100,25 L150,20 Z" fill="#f5f5f5" opacity="0.9"/>
+    <path d="M100,25 L100,35 L150,30 Z" fill="#f5f5f5" opacity="0.8"/>
+    <!-- Jolly Roger flag -->
+    <path d="M105,10 L130,10 L130,20 L105,20 Z" fill="#000"/>
+    <circle cx="115" cy="15" r="3" fill="#fff"/>
+    <circle cx="125" cy="15" r="3" fill="#fff"/>
+    <path d="M115,12 L115,18 M125,12 L125,18" stroke="#fff" stroke-width="1"/>
+    <!-- Windows -->
+    <circle cx="60" cy="50" r="5" fill="#d4a017"/>
+    <circle cx="90" cy="50" r="5" fill="#d4a017"/>
+    <circle cx="120" cy="50" r="5" fill="#d4a017"/>
+    <circle cx="150" cy="50" r="5" fill="#d4a017"/>
+  </svg>
+</div>
+
+    <div class="container">
+        <div class="one-piece-border"></div>
+        <div class="watermark">ONE PIECE</div>
+        
+        <!-- Straw hat decoration above header -->
+        <div class="straw-hat-decoration">🐳</div>
+        
+        <div class="header">
+            <h1>GRAND LINE SCHEDULE</h1>
+            <h2>Grade 11 CTK-Raphael Rafanan</h2>
+        </div>
+        
+        <div class="class-info">
+            <div class="class-section">
+                ROOM 204 - NAVIGATOR'S LOG
+            </div>
+            <div class="download-container">
+                <button class="download-all-btn" id="downloadAllNotes">
+                    <i class="fas fa-download"></i> Download All Logs
+                </button>
+            </div>
+        </div>
+        
+        <div class="schedule-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TIME</th>
+                        <th>MONDAY</th>
+                        <th>TUESDAY</th>
+                        <th>WEDNESDAY</th>
+                        <th>THURSDAY</th>
+                        <th>SATURDAY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time-slot">8:00 am - 10:00 am</td>
+                        <td class="subject-cell" data-day="Monday" data-time="8:00-10:00">
+                            <span class="subject-name">Effective Communication</span>
+                            <span class="teacher-name">Komunikasyon: A. MORIS | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Tuesday" data-time="8:00-10:00">
+                            <span class="subject-name">Life and Career Skills</span>
+                            <span class="teacher-name">Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Wednesday" data-time="8:00-10:00">
+                            <span class="subject-name">Effective Communication</span>
+                            <span class="teacher-name">Komunikasyon: A. MORIS | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Thursday" data-time="8:00-10:00">
+                            <span class="subject-name">Life and Career Skills</span>
+                            <span class="teacher-name">Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">10:00 am - 12:00 pm</td>
+                        <td class="subject-cell" data-day="Monday" data-time="10:00-12:00">
+                            <span class="subject-name">General Math</span>
+                            <span class="teacher-name">L.Domdom | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Tuesday" data-time="10:00-12:00">
+                            <span class="subject-name">Pag-aaral ng Kasayasayan at Lipunang Pilipino</span>
+                            <span class="teacher-name">Mr Gabriel Romero | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Wednesday" data-time="10:00-12:00">
+                            <span class="subject-name">General Math</span>
+                            <span class="teacher-name">L.Domdom | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Thursday" data-time="10:00-12:00">
+                            <span class="subject-name">Pag-aaral ng Kasayasayan at Lipunang Pilipino</span>
+                            <span class="teacher-name">Mr Gabriel Romero | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Saturday" data-time="10:00-12:00">
+                            <span class="subject-name">Philippine Politics and Governance</span>
+                            <span class="teacher-name">SAM GALLETO | Academic; PSYCHOLOGIST</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">12:00 pm - 1:00 pm</td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">1:00 pm - 3:00 pm</td>
+                        <!-- Philosophy on Monday (as requested) -->
+                        <td class="subject-cell" data-day="Monday" data-time="1:00-3:00">
+                            <span class="subject-name">INTRODUCTION TO PHILOSOPHY OF THE HUMAN PERSON</span>
+                            <span class="teacher-name">Sam Galleto | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <!-- General Science on Tuesday (as requested) -->
+                        <td class="subject-cell" data-day="Tuesday" data-time="1:00-3:00">
+                            <span class="subject-name">General Science</span>
+                            <span class="teacher-name">G. Gueta | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <!-- General Science on Wednesday (as requested) -->
+                        <td class="subject-cell" data-day="Wednesday" data-time="1:00-3:00">
+                            <span class="subject-name">General Science</span>
+                            <span class="teacher-name">G. Gueta | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <!-- Philosophy on Thursday (as requested) -->
+                        <td class="subject-cell" data-day="Thursday" data-time="1:00-3:00">
+                            <span class="subject-name">INTRODUCTION TO PHILOSOPHY OF THE HUMAN PERSON</span>
+                            <span class="teacher-name">Sam Galleto | Academic; PSYCHOLOGIST</span>
+                        </td>
+                        <td class="subject-cell" data-day="Saturday" data-time="1:00-3:00">
+                            <span class="subject-name">Philippine Politics and Governance</span>
+                            <span class="teacher-name">SAM GALLETO | Academic; PSYCHOLOGIST</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">3:00 - 5:00 pm</td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                        <td class="empty-cell"><div class="devil-fruit">🍎</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>Made by Christevenly S. Cirera(Facebook) Open for Commisions btw</p>
+        </div>
+    </div>
+    
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Pirate's Log Entry</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="timestamp-info" id="timestampInfo">
+                Last saved: <span id="lastSavedTime">Never</span>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="text">Captain's Log</div>
+                <div class="tab" data-tab="drawing">Treasure Map</div>
+            </div>
+            
+            <div class="tab-content active" id="textTab">
+                <textarea class="note-textarea" id="noteTextarea" placeholder="Record your observations, discoveries, and plans here..."></textarea>
+            </div>
+            
+            <div class="tab-content" id="drawingTab">
+                <div class="drawing-container" id="drawingContainer">
+                    <div class="canvas-wrapper">
+                        <canvas id="drawingCanvas"></canvas>
+                    </div>
+                    <div class="drawing-tools">
+                        <div class="tool-group">
+                            <div class="tool-btn active" id="penTool" title="Quill">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div class="tool-btn" id="eraserTool" title="Eraser">
+                                <i class="fas fa-eraser"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <span class="tool-label">Ink:</span>
+                            <input type="color" id="drawingColor" class="color-picker" value="#d4a017">
+                        </div>
+                        
+                        <div class="tool-group">
+                            <span class="tool-label">Size:</span>
+                            <input type="range" id="lineWidth" class="line-width" min="1" max="20" value="5">
+                        </div>
+                        
+                        <div class="tool-group">
+                            <button id="clearCanvas" class="tool-btn" title="Clear Map">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="modal-btn save-btn" id="saveNote">Save to Logbook</button>
+                <button class="modal-btn download-btn" id="downloadTextNote">
+                    <i class="fas fa-download"></i> Download Log
+                </button>
+                <button class="modal-btn download-btn" id="downloadDrawingNote">
+                    <i class="fas fa-download"></i> Download Map
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create animated stars
+            const starsContainer = document.getElementById('starsContainer');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2 + 0.5;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 5 + 2;
+                const delay = Math.random() * 5;
+                
+                star.style.top = `${top}%`;
+                star.style.left = `${left}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+            
+            const subjectCells = document.querySelectorAll('.subject-cell');
+            const noteModal = document.getElementById('noteModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const noteTextarea = document.getElementById('noteTextarea');
+            const saveNoteBtn = document.getElementById('saveNote');
+            const downloadTextNoteBtn = document.getElementById('downloadTextNote');
+            const downloadDrawingNoteBtn = document.getElementById('downloadDrawingNote');
+            const downloadAllNotesBtn = document.getElementById('downloadAllNotes');
+            const closeBtn = document.querySelector('.close-btn');
+            const lastSavedTime = document.getElementById('lastSavedTime');
+            const tabs = document.querySelectorAll('.tab');
+            const textTab = document.getElementById('textTab');
+            const drawingTab = document.getElementById('drawingTab');
+            
+            const canvas = document.getElementById('drawingCanvas');
+            const ctx = canvas.getContext('2d');
+            const penTool = document.getElementById('penTool');
+            const eraserTool = document.getElementById('eraserTool');
+            const drawingColor = document.getElementById('drawingColor');
+            const lineWidth = document.getElementById('lineWidth');
+            const clearCanvasBtn = document.getElementById('clearCanvas');
+            
+            let currentCell = null;
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+            let currentTool = 'pen';
+            let currentColor = '#d4a017';
+            let currentLineWidth = 5;
+            
+            function formatDateTime(date) {
+                const options = { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit', 
+                    minute: '2-digit'
+                };
+                return date.toLocaleString(undefined, options);
+            }
+            
+            function getNoteData(key) {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : null;
+            }
+            
+            function saveNoteData(key, content, drawingData = null) {
+                const now = new Date();
+                const noteData = {
+                    content: content,
+                    drawing: drawingData,
+                    timestamp: now.toISOString(),
+                    formatted: formatDateTime(now)
+                };
+                localStorage.setItem(key, JSON.stringify(noteData));
+                return noteData;
+            }
+            
+            subjectCells.forEach(cell => {
+                const day = cell.dataset.day;
+                const time = cell.dataset.time;
+                const key = `${day}-${time}`;
+                const noteData = getNoteData(key);
+                
+                if (noteData) {
+                    if (noteData.content && noteData.content.trim()) {
+                        cell.classList.add('has-note');
+                    }
+                    if (noteData.drawing) {
+                        cell.classList.add('has-drawing');
+                    }
+                    
+                    const timestampEl = document.createElement('span');
+                    timestampEl.className = 'note-timestamp';
+                    timestampEl.textContent = noteData.formatted;
+                    cell.appendChild(timestampEl);
+                }
+            });
+            
+            subjectCells.forEach(cell => {
+                cell.addEventListener('click', function() {
+                    const subjectName = this.querySelector('.subject-name').textContent;
+                    const day = this.dataset.day;
+                    const time = this.dataset.time;
+                    const key = `${day}-${time}`;
+                    
+                    currentCell = this;
+                    modalTitle.textContent = `${subjectName} on ${day} (${time})`;
+                    
+                    const noteData = getNoteData(key);
+                    noteTextarea.value = noteData ? noteData.content : '';
+                    
+                    lastSavedTime.textContent = noteData ? noteData.formatted : 'Never';
+                    
+                    setupCanvas();
+                    
+                    if (noteData && noteData.drawing) {
+                        loadDrawing(noteData.drawing);
+                    } else {
+                        clearCanvasDrawing();
+                    }
+                    
+                    noteModal.style.display = 'flex';
+                });
+            });
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const tabId = this.dataset.tab;
+                    textTab.classList.remove('active');
+                    drawingTab.classList.remove('active');
+                    
+                    if (tabId === 'text') {
+                        textTab.classList.add('active');
+                    } else {
+                        drawingTab.classList.add('active');
+                        setTimeout(setupCanvas, 50);
+                    }
+                });
+            });
+            
+            function setupCanvas() {
+                const container = drawingTab.querySelector('.canvas-wrapper');
+                canvas.width = container.clientWidth;
+                canvas.height = container.clientHeight;
+                
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+                ctx.lineWidth = currentLineWidth;
+                ctx.strokeStyle = currentColor;
+            }
+            
+            function startDrawing(e) {
+                isDrawing = true;
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+            
+            function stopDrawing() {
+                isDrawing = false;
+            }
+            
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            penTool.addEventListener('click', () => {
+                setActiveTool('pen');
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.strokeStyle = currentColor;
+            });
+            
+            eraserTool.addEventListener('click', () => {
+                setActiveTool('eraser');
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.strokeStyle = 'rgba(0,0,0,1)';
+            });
+            
+            drawingColor.addEventListener('input', () => {
+                currentColor = drawingColor.value;
+                if (currentTool === 'pen') {
+                    ctx.strokeStyle = currentColor;
+                }
+            });
+            
+            lineWidth.addEventListener('input', () => {
+                currentLineWidth = lineWidth.value;
+                ctx.lineWidth = currentLineWidth;
+            });
+            
+            clearCanvasBtn.addEventListener('click', clearCanvasDrawing);
+            
+            function setActiveTool(tool) {
+                currentTool = tool;
+                penTool.classList.remove('active');
+                eraserTool.classList.remove('active');
+                
+                if (tool === 'pen') {
+                    penTool.classList.add('active');
+                } else {
+                    eraserTool.classList.add('active');
+                }
+            }
+            
+            function clearCanvasDrawing() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            function loadDrawing(dataURL) {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                };
+                img.src = dataURL;
+            }
+            
+            saveNoteBtn.addEventListener('click', function() {
+                if (!currentCell) return;
+                
+                const day = currentCell.dataset.day;
+                const time = currentCell.dataset.time;
+                const key = `${day}-${time}`;
+                const noteContent = noteTextarea.value;
+            
+                const drawingData = canvas.toDataURL();
+                
+                if (noteContent.trim() || drawingData) {
+                    const noteData = saveNoteData(key, noteContent, drawingData);
+                    
+                    currentCell.classList.remove('has-note', 'has-drawing');
+                    
+                    if (noteContent.trim()) {
+                        currentCell.classList.add('has-note');
+                    }
+                    
+                    if (drawingData) {
+                        currentCell.classList.add('has-drawing');
+                    }
+                    
+                    let timestampEl = currentCell.querySelector('.note-timestamp');
+                    if (!timestampEl) {
+                        timestampEl = document.createElement('span');
+                        timestampEl.className = 'note-timestamp';
+                        currentCell.appendChild(timestampEl);
+                    }
+                    timestampEl.textContent = noteData.formatted;
+                    
+                    lastSavedTime.textContent = noteData.formatted;
+                    
+                    const originalText = saveNoteBtn.textContent;
+                    saveNoteBtn.innerHTML = '<i class="fas fa-check"></i> Log Updated!';
+                    setTimeout(() => {
+                        saveNoteBtn.innerHTML = originalText;
+                    }, 2000);
+                } else {
+                    localStorage.removeItem(key);
+                    currentCell.classList.remove('has-note', 'has-drawing');
+                    
+                    const timestampEl = currentCell.querySelector('.note-timestamp');
+                    if (timestampEl) {
+                        timestampEl.remove();
+                    }
+                    
+                    lastSavedTime.textContent = 'Never';
+                }
+            });
+            
+            downloadTextNoteBtn.addEventListener('click', function() {
+                if (!currentCell) return;
+
+                const subjectName = currentCell.querySelector('.subject-name').textContent;
+                const day = currentCell.dataset.day;
+                const time = currentCell.dataset.time;
+                const noteContent = noteTextarea.value;
+
+                if (!noteContent.trim()) {
+                    alert('No log entries to download!');
+                    return;
+                }
+                
+                const key = `${day}-${time}`;
+                const noteData = getNoteData(key);
+                const lastSaved = noteData ? noteData.formatted : 'Not saved yet';
+                const downloadTime = formatDateTime(new Date());
+
+                const filename = `${subjectName} Log (${day} ${time}).txt`;
+                const fileContent = 
+`Subject: ${subjectName}
+Day: ${day}
+Time: ${time}
+Last Saved: ${lastSaved}
+Downloaded: ${downloadTime}
+
+Notes:
+${noteContent}`;
+
+                downloadTextFile(fileContent, filename);
+            });
+            
+            downloadDrawingNoteBtn.addEventListener('click', function() {
+                if (!currentCell) return;
+                
+                const subjectName = currentCell.querySelector('.subject-name').textContent;
+                const day = currentCell.dataset.day;
+                const time = currentCell.dataset.time;
+                const key = `${day}-${time}`;
+                const drawingData = canvas.toDataURL();
+
+                if (!drawingData) {
+                    alert('No treasure map to download!');
+                    return;
+                }
+                const filename = `${subjectName} Map (${day} ${time}).png`;
+                downloadImageFile(drawingData, filename);
+            });
+
+            downloadAllNotesBtn.addEventListener('click', function() {
+                const notes = [];
+                let noteCount = 0;
+                
+                subjectCells.forEach(cell => {
+                    const day = cell.dataset.day;
+                    const time = cell.dataset.time;
+                    const key = `${day}-${time}`;
+                    const noteData = getNoteData(key);
+                    
+                    if (noteData) {
+                        const subjectName = cell.querySelector('.subject-name').textContent;
+                        const teacherName = cell.querySelector('.teacher-name')?.textContent || '';
+                        
+                        notes.push(`Subject: ${subjectName}`);
+                        notes.push(`Teacher: ${teacherName}`);
+                        notes.push(`Day: ${day}`);
+                        notes.push(`Time: ${time}`);
+                        notes.push(`Last Saved: ${noteData.formatted}`);
+                        notes.push(`Notes:\n${noteData.content || 'No log entries'}`);
+                        notes.push('-'.repeat(60));
+                        
+                        noteCount++;
+                    }
+                });
+                
+                if (noteCount === 0) {
+                    alert('No logs to download!');
+                    return;
+                }
+                
+                const filename = `Straw_Hat_Logbook_${new Date().toISOString().slice(0, 10)}.txt`;
+                const fileContent = notes.join('\n');
+                
+                downloadTextFile(fileContent, filename);
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                noteModal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === noteModal) {
+                    noteModal.style.display = 'none';
+                }
+            });
+            
+            function downloadTextFile(content, filename) {
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 100);
+            }
+            
+            function downloadImageFile(dataUrl, filename) {
+                const a = document.createElement('a');
+                a.href = dataUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            
+            window.addEventListener('resize', () => {
+                if (drawingTab.classList.contains('active')) {
+                    setupCanvas();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
