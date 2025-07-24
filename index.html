@@ -6,7 +6,6 @@
     <title>One Piece - Grand Line Schedule</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Seaweed+Script&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -33,7 +32,6 @@
             overflow-y: auto;
         }
         
-        /* Sky with animated clouds */
         .sky {
             position: fixed;
             top: 0;
@@ -145,7 +143,6 @@
             100% { transform: translateX(calc(100vw + 300px)); }
         }
         
-        /* Enhanced ocean waves with realistic foam */
         .ocean {
             position: fixed;
             bottom: 0;
@@ -189,30 +186,30 @@
         }
         
         .wave-foam {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,90 600,60 T1200,60 V120 H0 Z" fill="white" opacity="0.8"/></svg>');
-    background-repeat: repeat-x;
-    animation: foamMove 10s linear infinite, foamWobble 3s ease-in-out infinite;
-    z-index: 5;
-    height: 40%;
-    top: 0;
-    width: 200%;
-    background-size: 50% 100%;
-    mask-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 100%);
-    opacity: 0.7;
-}
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,90 600,60 T1200,60 V120 H0 Z" fill="white" opacity="0.8"/></svg>');
+            background-repeat: repeat-x;
+            animation: foamMove 10s linear infinite, foamWobble 3s ease-in-out infinite;
+            z-index: 5;
+            height: 40%;
+            top: 0;
+            width: 200%;
+            background-size: 50% 100%;
+            mask-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 100%);
+            opacity: 0.7;
+        }
 
-@keyframes foamMove {
-    0% { transform: translateX(0) translateY(0); }
-    100% { transform: translateX(-25%) translateY(0); }
-}
+        @keyframes foamMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-25%) translateY(0); }
+            }
 
-@keyframes foamWobble {
-    0%, 100% { transform: translateX(0) translateY(-2px) scaleY(1); }
-    25% { transform: translateX(0) translateY(0) scaleY(0.98); }
-    50% { transform: translateX(0) translateY(2px) scaleY(0.95); }
-    75% { transform: translateX(0) translateY(0) scaleY(0.98); }
-}
+        @keyframes foamWobble {
+            0%, 100% { transform: translateX(0) translateY(-2px) scaleY(1); }
+            25% { transform: translateX(0) translateY(0) scaleY(0.98); }
+            50% { transform: translateX(0) translateY(2px) scaleY(0.95); }
+            75% { transform: translateX(0) translateY(0) scaleY(0.98); }
+        }
         
         @keyframes wave {
             0% { 
@@ -237,7 +234,6 @@
             50% { height: 25px; }
         }
         
-        /* Animated stars */
         .stars {
             position: fixed;
             top: 0;
@@ -319,8 +315,7 @@
             z-index: 2;
         }
 
-        /* Straw Hat decoration above header */
-        .straw-hat-decoration {
+        .laboon-spin {
             position: absolute;
             top: -30px;
             left: 50%;
@@ -329,10 +324,10 @@
             color: #d4a017;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
             z-index: 3;
-            animation: rotateHat 15s linear infinite;
+            animation: rotateBoon 15s linear infinite;
         }
         
-        @keyframes rotateHat {
+        @keyframes rotateBoon {
             0% { transform: translateX(-50%) rotate(0deg); }
             100% { transform: translateX(-50%) rotate(360deg); }
         }
@@ -797,21 +792,21 @@
         }
         
         .pirate-ship {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 150px;
-    height: 100px;
-    opacity: 0.7;
-    z-index: 0;
-    animation: shipFloat 12s ease-in-out infinite;
-    transform-origin: center bottom;
-}
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 150px;
+            height: 100px;
+            opacity: 0.7;
+            z-index: 0;
+            animation: shipFloat 12s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
 
-.pirate-ship svg {
-    width: 100%;
-    height: 100%;
-}
+        .pirate-ship svg {
+            width: 100%;
+            height: 100%;
+        }
 
 @keyframes shipFloat {
     0%, 100% { 
@@ -827,6 +822,24 @@
         transform: translateY(5px) rotate(3deg); 
     }
 }
+
+    .marine-ship {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 150px;
+        height: 100px;
+        opacity: 0.7;
+        z-index: 0;
+        animation: shipFloat 10s ease-in-out infinite;
+        transform-origin: center bottom;
+        animation-delay: 2s;
+    }
+
+.marine-ship svg {
+    width: 100%;
+    height: 100%;
+}
         
         @media (max-width: 768px) {
             .header h1 { font-size: 2.5rem; }
@@ -837,7 +850,7 @@
             .teacher-name { font-size: 0.85rem; }
             .class-info { flex-direction: column; gap: 12px; text-align: center; }
             .download-all-btn { margin-left: 0; margin-top: 10px; }
-            .straw-hat-decoration { top: -50px; font-size: 3rem; }
+            .laboon-spin { top: -50px; font-size: 3rem; }
         }
         
         @media (max-width: 576px) {
@@ -854,47 +867,38 @@
             .straw-hat { font-size: 2rem; top: -15px; }
             .modal-content { height: 70vh; }
             .modal-actions { flex-direction: column; }
-            .straw-hat-decoration { top: -40px; font-size: 2.5rem; }
+            .laboon-spin { top: -40px; font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated stars -->
     <div class="stars" id="starsContainer"></div>
     
-    <!-- Sky with animated clouds -->
     <div class="sky">
         <div class="cloud cloud-1"></div>
         <div class="cloud cloud-2"></div>
         <div class="cloud cloud-3"></div>
     </div>
     
-    <!-- Enhanced ocean waves with realistic foam -->
     <div class="ocean">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
         <div class="wave wave3"></div>
         <div class="wave wave-foam"></div>
     </div>
-    
-    <!-- Replace the existing .pirate-ship div with this: -->
+
+    <!--Pirate ship on the left-->
 <div class="pirate-ship">
   <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-    <!-- Ship hull -->
     <path d="M20,60 L180,60 L170,40 L30,40 Z" fill="#722f37"/>
-    <!-- Deck -->
     <path d="M40,40 L160,40 L150,30 L50,30 Z" fill="#5a1e28"/>
-    <!-- Mast -->
     <rect x="95" y="10" width="10" height="30" fill="#d4a017"/>
-    <!-- Sail -->
     <path d="M100,15 L100,25 L150,20 Z" fill="#f5f5f5" opacity="0.9"/>
     <path d="M100,25 L100,35 L150,30 Z" fill="#f5f5f5" opacity="0.8"/>
-    <!-- Jolly Roger flag -->
     <path d="M105,10 L130,10 L130,20 L105,20 Z" fill="#000"/>
     <circle cx="115" cy="15" r="3" fill="#fff"/>
     <circle cx="125" cy="15" r="3" fill="#fff"/>
     <path d="M115,12 L115,18 M125,12 L125,18" stroke="#fff" stroke-width="1"/>
-    <!-- Windows -->
     <circle cx="60" cy="50" r="5" fill="#d4a017"/>
     <circle cx="90" cy="50" r="5" fill="#d4a017"/>
     <circle cx="120" cy="50" r="5" fill="#d4a017"/>
@@ -902,12 +906,28 @@
   </svg>
 </div>
 
+<!-- Marine ship on the right -->
+<div class="marine-ship">
+  <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20,60 L180,60 L170,40 L30,40 Z" fill="#2a5a8f"/>
+    <path d="M40,40 L160,40 L150,30 L50,30 Z" fill="#1a3a5f"/>
+    <rect x="95" y="10" width="10" height="30" fill="#ffffff"/>
+    <path d="M100,15 L100,25 L150,20 Z" fill="#ffffff" opacity="0.9"/>
+    <path d="M100,25 L100,35 L150,30 Z" fill="#ffffff" opacity="0.8"/>
+    <path d="M105,10 L130,10 L130,20 L105,20 Z" fill="#ffffff"/>
+    <path d="M115,10 L115,20 M105,15 L130,15" stroke="#2a5a8f" stroke-width="2"/>
+    <circle cx="60" cy="50" r="5" fill="#ffffff"/>
+    <circle cx="90" cy="50" r="5" fill="#ffffff"/>
+    <circle cx="120" cy="50" r="5" fill="#ffffff"/>
+    <circle cx="150" cy="50" r="5" fill="#ffffff"/>
+  </svg>
+</div>
+
     <div class="container">
         <div class="one-piece-border"></div>
         <div class="watermark">ONE PIECE</div>
         
-        <!-- Straw hat decoration above header -->
-        <div class="straw-hat-decoration">🐳</div>
+        <div class="laboon-spin">🐳</div>
         
         <div class="header">
             <h1>GRAND LINE SCHEDULE</h1>
@@ -991,22 +1011,18 @@
                     </tr>
                     <tr>
                         <td class="time-slot">1:00 pm - 3:00 pm</td>
-                        <!-- Philosophy on Monday (as requested) -->
                         <td class="subject-cell" data-day="Monday" data-time="1:00-3:00">
                             <span class="subject-name">INTRODUCTION TO PHILOSOPHY OF THE HUMAN PERSON</span>
                             <span class="teacher-name">Sam Galleto | Academic; PSYCHOLOGIST</span>
                         </td>
-                        <!-- General Science on Tuesday (as requested) -->
                         <td class="subject-cell" data-day="Tuesday" data-time="1:00-3:00">
                             <span class="subject-name">General Science</span>
                             <span class="teacher-name">G. Gueta | Academic; PSYCHOLOGIST</span>
                         </td>
-                        <!-- General Science on Wednesday (as requested) -->
                         <td class="subject-cell" data-day="Wednesday" data-time="1:00-3:00">
                             <span class="subject-name">General Science</span>
                             <span class="teacher-name">G. Gueta | Academic; PSYCHOLOGIST</span>
                         </td>
-                        <!-- Philosophy on Thursday (as requested) -->
                         <td class="subject-cell" data-day="Thursday" data-time="1:00-3:00">
                             <span class="subject-name">INTRODUCTION TO PHILOSOPHY OF THE HUMAN PERSON</span>
                             <span class="teacher-name">Sam Galleto | Academic; PSYCHOLOGIST</span>
